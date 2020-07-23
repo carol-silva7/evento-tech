@@ -3,7 +3,7 @@ const express = require("express");
 const path = require("path");
 
 const app = express();
-
+const PORT = process.env.PORT || 8080;
 // Serve os arquivos estáticos da pasta dist (gerada pelo ng build)
 app.use(express.static(__dirname + "/dist/bbaApp"));
 
@@ -12,5 +12,6 @@ app.get("/*", function (req, res) {
 });
 
 // Inicia a aplicação pela porta configurada
-app.listen(process.env.PORT || 8080);
-console.log("Servidor iniciado na porta" + PORT);
+app.listen(process.env.PORT || 8080, () => {
+  console.log("Servidor iniciado na porta" + PORT);
+});
